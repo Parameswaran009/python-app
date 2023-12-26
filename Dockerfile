@@ -4,6 +4,15 @@ FROM python:3.10.0-alpine3.15
 # Set the working directory
 WORKDIR /app
 
+# Install dependencies
+RUN apk update && apk add --no-cache curl
+
+# Install pip
+RUN python -m ensurepip --default-pip
+
+# Upgrade pip
+RUN pip install --no-cache-dir --upgrade pip
+
 # Copy requirements.txt
 COPY requirements.txt .
 
