@@ -8,13 +8,10 @@ WORKDIR /app
 RUN apk update && apk add --no-cache curl
 
 # Install pip
-RUN python -m ensurepip --default-pip
+RUN wget https://bootstrap.pypa.io/get-pip.py && python get-pip.py && rm get-pip.py
 
 # Upgrade pip
 RUN pip install --no-cache-dir --upgrade pip
-
-# Install pip explicitly
-RUN apk add --no-cache py3-pip
 
 # Copy requirements.txt
 COPY requirements.txt .
