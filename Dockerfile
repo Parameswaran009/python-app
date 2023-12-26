@@ -13,6 +13,9 @@ RUN python -m ensurepip --default-pip
 # Upgrade pip
 RUN pip install --no-cache-dir --upgrade pip
 
+# Install pip explicitly
+RUN apk add --no-cache py3-pip
+
 # Copy requirements.txt
 COPY requirements.txt .
 
